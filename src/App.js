@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import FirstComponent from './components/learning-examples/FirstComponent';
-import SecondComponent from './components/learning-examples/SecondComponent';
-import TestComponent from './components/learning-examples/TestComponent';
+import TodoApp from './components/todo/TodoApp';
 
-
-import logo from './logo.svg';
 import './App.css';
  
 class App extends Component {
@@ -13,6 +9,7 @@ class App extends Component {
       <div className="App">
    
 
+      <TodoApp/>
       
       
       </div>
