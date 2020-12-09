@@ -21,8 +21,8 @@ class LoginComponent extends Component{
             password : ''
         }
 
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+       // this.handleUsernameChange = this.handleUsernameChange.bind(this);
+      //  this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
