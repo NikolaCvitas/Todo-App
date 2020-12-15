@@ -1,5 +1,6 @@
+import { render } from '@testing-library/react';
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class TodoApp extends Component{
     render(){
@@ -8,9 +9,13 @@ class TodoApp extends Component{
 
             <Router>
             <>
+            <Switch>
             <Route path="/" exact component={LoginComponent}/>
             <Route path="/login" component={LoginComponent}/>
             <Route path="/welcome" component={WelcomeComponent}/>
+            <Route component={ErrorComponent}/>
+            </Switch>
+
             </>
             </Router>
             
@@ -93,6 +98,12 @@ function LoginSuccess(props){
         return <div> Login Successful</div>
     }
     return null
+}
+
+function ErrorComponent(){
+   
+        return <div> Error occured.</div>
+    
 }
 
 function ShowInvalidCredentials(props){
