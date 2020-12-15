@@ -12,7 +12,8 @@ class TodoApp extends Component{
             <Switch>
             <Route path="/" exact component={LoginComponent}/>
             <Route path="/login" component={LoginComponent}/>
-            <Route path="/welcome" component={WelcomeComponent}/>
+            <Route path="/welcome/:name" component={WelcomeComponent}/>
+            <Route path="/todos" component={ListTodosComponent}/>
             <Route component={ErrorComponent}/>
             </Switch>
 
@@ -58,7 +59,7 @@ class LoginComponent extends Component{
 
         if(this.state.username ==='nikola' && this.state.password ==='1234'){
             console.log('Successful')
-            this.props.history.push("/welcome");
+            this.props.history.push(`/welcome/${this.state.username}`);
            
           // this.setState({showSuccessMessage : true})
            //this.setState({hasLoginFailed : false})
@@ -88,9 +89,55 @@ class LoginComponent extends Component{
 class WelcomeComponent extends Component{
     render(){
         return(
-            <div>Welcome Nikola</div>
+            <div>Welcome {this.props.match.params.name}</div>
         )
     }
+}
+
+class ListTodosComponent extends Component{
+
+    constructor(props){
+        super(props)
+        this.state ={
+            todos : 
+            [
+                { id : 1, description : 'Learn React'},
+                { id : 2, description : 'Learn Java'},
+                { id : 2, description : 'Learn Git'}
+            ]
+        }
+    }
+    render(){
+        return(
+            <div>
+            <h1>List Todos</h1>
+            <table>
+            <thead>
+            <tr>
+            <th>id</th>
+            <th>description</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {
+
+                this.state.todos.map (
+                    todo =>
+                    <tr>
+                    <td>{todo.id}</td>
+                    <td>{todo.description}</td>
+                    </tr>
+                )
+
+            }
+
+            </tbody>
+            </table>
+            
+            </div>
+        )
+        }
 }
 
 function LoginSuccess(props){
