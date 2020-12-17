@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 
 class TodoApp extends Component{
     render(){
@@ -9,6 +9,8 @@ class TodoApp extends Component{
 
             <Router>
             <>
+
+            <HeaderComponent/>
             <Switch>
             <Route path="/" exact component={LoginComponent}/>
             <Route path="/login" component={LoginComponent}/>
@@ -17,6 +19,7 @@ class TodoApp extends Component{
             <Route component={ErrorComponent}/>
             </Switch>
 
+            <FooterComponent/>
             </>
             </Router>
             
@@ -89,7 +92,11 @@ class LoginComponent extends Component{
 class WelcomeComponent extends Component{
     render(){
         return(
-            <div>Welcome {this.props.match.params.name}</div>
+            <div>
+            
+            Welcome {this.props.match.params.name} . You can manage your todos <Link to="/todos">here</Link>.
+            
+            </div>
         )
     }
 }
@@ -101,9 +108,11 @@ class ListTodosComponent extends Component{
         this.state ={
             todos : 
             [
-                { id : 1, description : 'Learn React'},
-                { id : 2, description : 'Learn Java'},
-                { id : 2, description : 'Learn Git'}
+                { id : 1, description : 'Learn React', done :false, targetDate : new Date()},
+                { id : 2, description : 'Learn Java', done :false, targetDate : new Date()},
+                { id : 3, description : 'Learn Git', done :false, targetDate : new Date()},
+                { id : 4, description : 'Rowing', done :false, targetDate : new Date()},
+                { id : 5, description : 'Running', done :false, targetDate : new Date()}
             ]
         }
     }
@@ -114,8 +123,10 @@ class ListTodosComponent extends Component{
             <table>
             <thead>
             <tr>
-            <th>id</th>
-            <th>description</th>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Is completed?</th>
+            <th>Target Date</th>
 
             </tr>
             </thead>
@@ -127,6 +138,8 @@ class ListTodosComponent extends Component{
                     <tr>
                     <td>{todo.id}</td>
                     <td>{todo.description}</td>
+                    <td>{todo.done.toString()}</td>
+                    <td>{todo.targetDate.toDateString()}</td>
                     </tr>
                 )
 
@@ -138,6 +151,26 @@ class ListTodosComponent extends Component{
             </div>
         )
         }
+}
+
+class HeaderComponent extends Component{
+    render(){
+        return(
+            <div>
+            Header <hr/>
+            </div>
+        )
+    }
+}
+
+class FooterComponent extends Component{
+    render(){
+        return(
+            <div>
+            Nikola Cvitaš, 2020. <hr/>
+            </div>
+        )
+    }
 }
 
 function LoginSuccess(props){
