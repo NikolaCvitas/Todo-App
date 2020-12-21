@@ -156,9 +156,26 @@ class ListTodosComponent extends Component{
 class HeaderComponent extends Component{
     render(){
         return(
+
             <div>
-            Header <hr/>
+            <header>
+            <nav class="navbar">
+
+            <div> <a>Nikola.hr</a></div>
+            <ul>
+            <li>Home</li>
+            <li>Todos</li>
+            </ul>
+            <ul>
+            <li>Login</li>
+            <li>Logout</li>
+            </ul>
+            </nav>
+            </header>
+            
             </div>
+
+       
         )
     }
 }
