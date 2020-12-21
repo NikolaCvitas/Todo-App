@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodoApp from './components/todo/TodoApp';
 
 import './App.css';
+import './boostrap.css'
  
 class App extends Component {
   render() {
