@@ -77,13 +77,17 @@ class LoginComponent extends Component{
     render(){
         return (
             <div>
+            <h1>Login</h1>
+            <div className="container">
+           
             {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed} />
         <LoginSuccess showSuccessMessage={this.state.showSuccessMessage }/>*/}
-             {this.state.hasLoginFailed && <div>Invalid Credentials</div>}
+             {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
              {this.state.showSuccessMessage && <div> Login Successful</div>}
             User Name: <input type="text" name="username" value = {this.state.username} onChange = {this.handleChange}></input>
             Password: <input type="password" name="password" value = {this.state.password} onChange = {this.handleChange}></input>
-            <button onClick={this.loginClicked}>Login</button> 
+            <button className="btn btn-success" onClick={this.loginClicked}>Login</button> 
+            </div>
             </div>
 
         )
@@ -93,11 +97,15 @@ class LoginComponent extends Component{
 class WelcomeComponent extends Component{
     render(){
         return(
-            <div>
-            
+
+            <>
+
+            <h1>Welcome!</h1>
+            <div class="container">
             Welcome {this.props.match.params.name} . You can manage your todos <Link to="/todos">here</Link>.
-            
             </div>
+            </>
+
         )
     }
 }
@@ -121,10 +129,11 @@ class ListTodosComponent extends Component{
         return(
             <div>
             <h1>List Todos</h1>
-            <table>
+            <div class="container">
+            <table class="table">
             <thead>
             <tr>
-            <th>Id</th>
+            
             <th>Description</th>
             <th>Is completed?</th>
             <th>Target Date</th>
@@ -137,7 +146,7 @@ class ListTodosComponent extends Component{
                 this.state.todos.map (
                     todo =>
                     <tr>
-                    <td>{todo.id}</td>
+                    
                     <td>{todo.description}</td>
                     <td>{todo.done.toString()}</td>
                     <td>{todo.targetDate.toDateString()}</td>
@@ -148,6 +157,7 @@ class ListTodosComponent extends Component{
 
             </tbody>
             </table>
+            </div>
             
             </div>
         )
