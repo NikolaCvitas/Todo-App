@@ -159,16 +159,16 @@ class HeaderComponent extends Component{
 
             <div>
             <header>
-            <nav class="navbar">
+            <nav class="navbar  navbar-expand-md navbar-dark bg-dark">
 
-            <div> <a>Nikola.hr</a></div>
-            <ul>
-            <li>Home</li>
-            <li>Todos</li>
+            <div> <a href="https://ncoun.herokuapp.com/">Todo App</a></div>
+            <ul className="navbar-nav">
+            <li  > <Link className="nav-link" to="/welcome/nikola">Home</Link></li>
+            <li ><Link className="nav-link" to="/todos">Todos</Link></li>
             </ul>
-            <ul>
-            <li>Login</li>
-            <li>Logout</li>
+            <ul className="navbar-nav navbar-collapse justify-content-end">
+            <li ><Link className="nav-link" to="/login">Login</Link></li>
+            <li ><Link className="nav-link" to="/logout">Logout</Link></li>
             </ul>
             </nav>
             </header>
