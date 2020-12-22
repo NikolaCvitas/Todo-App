@@ -1,7 +1,8 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Switch, withRouter} from 'react-router-dom';
 import AuthenticationService from './AuthenticationService.js'
+import HeaderComponent from './HeaderComponent'
 
 class TodoApp extends Component{
     render(){
@@ -104,7 +105,7 @@ class WelcomeComponent extends Component{
             <>
 
             <h1>Welcome!</h1>
-            <div class="container">
+            <div className="container">
             Welcome {this.props.match.params.name} . You can manage your todos <Link to="/todos">here</Link>.
             </div>
             </>
@@ -148,7 +149,7 @@ class ListTodosComponent extends Component{
 
                 this.state.todos.map (
                     todo =>
-                    <tr>
+                    <tr key={todo.id}>
                     
                     <td>{todo.description}</td>
                     <td>{todo.done.toString()}</td>
@@ -167,33 +168,7 @@ class ListTodosComponent extends Component{
         }
 }
 
-class HeaderComponent extends Component{
-    render(){
-        return(
 
-            <div>
-            <header>
-            <nav class="navbar  navbar-expand-md navbar-dark bg-dark">
-
-            <div> <a href="https://ncoun.herokuapp.com/">Todo App</a></div>
-            <ul className="navbar-nav">
-            <li  > <Link className="nav-link" to="/welcome/nikola">Home</Link></li>
-            <li ><Link className="nav-link" to="/todos">Todos</Link></li>
-            </ul>
-            <ul className="navbar-nav navbar-collapse justify-content-end">
-            <li ><Link className="nav-link" to="/login">Login</Link></li>
-            <li ><Link className="nav-link" onClick={AuthenticationService.logout} to="/logout">Logout</Link></li>
-            </ul>
-            </nav>
-            </header>
-         
-            
-            </div>
-
-       
-        )
-    }
-}
 
 class FooterComponent extends Component{
     render(){
