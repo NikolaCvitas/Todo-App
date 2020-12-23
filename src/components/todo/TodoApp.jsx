@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route, Switch, withRouter} from 'react-router-dom';
+import AuthenicatedRoute from './AutheniticatedRoute.jsx';
 import AuthenticationService from './AuthenticationService.js'
 import HeaderComponent from './HeaderComponent'
 
@@ -16,9 +17,9 @@ class TodoApp extends Component{
             <Switch>
             <Route path="/" exact component={LoginComponent}/>
             <Route path="/login" component={LoginComponent}/>
-            <Route path="/logout" component={LogoutComponent}/>
-            <Route path="/welcome/:name" component={WelcomeComponent}/>
-            <Route path="/todos" component={ListTodosComponent}/>
+            <AuthenicatedRoute path="/logout" component={LogoutComponent}/>
+            <AuthenicatedRoute path="/welcome/:name" component={WelcomeComponent}/>
+            <AuthenicatedRoute path="/todos" component={ListTodosComponent}/>
             <Route component={ErrorComponent}/>
             </Switch>
 
