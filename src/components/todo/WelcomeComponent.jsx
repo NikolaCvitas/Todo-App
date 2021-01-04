@@ -8,6 +8,8 @@ class WelcomeComponent extends Component{
         super(props)
         this.retreiveWelcomeMessage = this.retreiveWelcomeMessage.bind(this)
         this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
+        this.handleSuccessfuhandleErrorlResponse = this.handleError.bind(this)
+        
         this.state ={
             welcomeMessage : ''
         }
@@ -44,6 +46,7 @@ class WelcomeComponent extends Component{
 
         TestService.executeTestPathVariableService(this.props.match.params.name)
         .then(response => this.handleSuccessfulResponse(response))
+        .catch(response => this.handleError(response))
 
        
     }
@@ -51,6 +54,11 @@ class WelcomeComponent extends Component{
     handleSuccessfulResponse(response){
         this.setState({welcomeMessage : response.data.message})
 
+    }
+
+    handleError(error){
+        console.log(error.response)
+        this.setState({welcomeMessage : error.response.data.message})
     }
 }
 
