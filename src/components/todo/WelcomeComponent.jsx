@@ -39,7 +39,10 @@ class WelcomeComponent extends Component{
 
     retreiveWelcomeMessage() {
 
-        TestService.executeTestBeanService()
+       // TestService.executeTestBeanService()
+       // .then(response => this.handleSuccessfulResponse(response))
+
+        TestService.executeTestPathVariableService(this.props.match.params.name)
         .then(response => this.handleSuccessfulResponse(response))
 
        
