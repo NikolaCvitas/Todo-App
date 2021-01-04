@@ -6,7 +6,15 @@ class TestService {
 
         // console.log('executed service')
 
-       return axios.get('http://localhost:8080/test/');
+       return axios.get('http://localhost:8080/test');
+       
+    }
+
+    executeTestBeanService() {
+
+        // console.log('executed service')
+
+       return axios.get('http://localhost:8080/test-bean');
        
     }
  

@@ -39,14 +39,14 @@ class WelcomeComponent extends Component{
 
     retreiveWelcomeMessage() {
 
-        TestService.executeTestService()
+        TestService.executeTestBeanService()
         .then(response => this.handleSuccessfulResponse(response))
 
        
     }
 
     handleSuccessfulResponse(response){
-        this.setState({welcomeMessage : response.data})
+        this.setState({welcomeMessage : response.data.message})
 
     }
 }
