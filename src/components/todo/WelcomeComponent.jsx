@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { Link} from 'react-router-dom';
+import TestService from '../../api/todo/TestService.js';
 
 class WelcomeComponent extends Component{
 
     constructor(props){
         super(props)
         this.retreiveWelcomeMessage = this.retreiveWelcomeMessage.bind(this)
+        this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
+        this.state ={
+            welcomeMessage : ''
+        }
     }
     render(){
         return(
@@ -22,6 +27,11 @@ class WelcomeComponent extends Component{
             Click here to get customized welcome message.
             <button onClick={this.retreiveWelcomeMessage} className="btn btn-success">Get Welcome Message</button>
             </div>
+
+            <div className="container">
+            {this.state.welcomeMessage}
+            </div>
+
             </>
 
         )
@@ -29,7 +39,15 @@ class WelcomeComponent extends Component{
 
     retreiveWelcomeMessage() {
 
-        console.log("retreive clicked")
+        TestService.executeTestService()
+        .then(response => this.handleSuccessfulResponse(response))
+
+       
+    }
+
+    handleSuccessfulResponse(response){
+        this.setState({welcomeMessage : response.data})
+
     }
 }
 
