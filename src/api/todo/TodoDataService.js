@@ -2,6 +2,12 @@ import axios from "axios";
 
 class TodoDataService{
 
+    retreiveTodo(name,id) {
+
+        return axios.get(`http://localhost:8080/users/${name}/todos/${id}`);
+        
+     }
+
 
     retreiveAllTodos(name) {
 
